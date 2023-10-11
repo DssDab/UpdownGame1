@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public Image TimeLimitImg;
     public Sprite[] Imgs;
 
-    int Turn = 0;
+    int Turn = 1;
     float pTime = 5.0f;
     int max=100, min=1, rand;
     bool gameOver;
@@ -50,15 +50,6 @@ public class GameManager : MonoBehaviour
         if (gameOver)
             return;
 
-        if (Turn < 20)
-            PChanceText.text = " ÁøÇà È½¼ö : 20¹ø Áß " + (Turn+1) + "¹ø";
-
-        else
-        {  
-            waitImg.sprite = Imgs[2];
-            ResultText.text = " ¸ð¸£°Ú½À´Ï´Ù..";
-            return;
-        }
         pTime -= Time.deltaTime;
         TimeLimit.text = pTime.ToString("F2");
         if (pTime < 0.0f)
@@ -79,7 +70,7 @@ public class GameManager : MonoBehaviour
         
         if (max < min )
         {
-            ResultText.text = "¹öÆ°À» Àß¸ø ´©¸£¼Ì½À´Ï´Ù. (´Ù½Ã ÁøÇà)";
+            ResultText.text = "ë²„íŠ¼ì„ ìž˜ëª» ëˆ„ë¥´ì…¨ìŠµë‹ˆë‹¤. (ë‹¤ì‹œ ì§„í–‰)";
             gameOver = true;
             return;
         }
@@ -87,18 +78,18 @@ public class GameManager : MonoBehaviour
       
       if(max == min)
         {
-            ResultText.text = "´ç½ÅÀÌ »ý°¢ÇÑ ¼ýÀÚ´Â " + rand + "ÀÔ´Ï´Ù!!";
+            ResultText.text = "ë‹¹ì‹ ì´ ìƒê°í•œ ìˆ«ìžëŠ” " + rand + "ìž…ë‹ˆë‹¤!!";
             gameOver = true;
             return;
         }
 
-        RuleText.text = "´ç½ÅÀÌ »ý°¢ÇÑ ¼ýÀÚ´Â " + rand + "ÀÔ´Ï±î?";
+        RuleText.text = "ë‹¹ì‹ ì´ ìƒê°í•œ ìˆ«ìžëŠ” " + rand + "ìž…ë‹ˆê¹Œ?";
 
     }
     private void TrueClick()
     {
         
-        ResultText.text = "´ç½ÅÀÌ »ý°¢ÇÑ ¼ýÀÚ´Â " + rand + "ÀÔ´Ï´Ù!!";
+        ResultText.text = "ë‹¹ì‹ ì´ ìƒê°í•œ ìˆ«ìžëŠ” " + rand + "ìž…ë‹ˆë‹¤!!";
         waitImg.sprite = Imgs[1];
         gameOver = true;
     }
@@ -110,7 +101,7 @@ public class GameManager : MonoBehaviour
 
        if(rand ==1)
         {
-            ResultText.text = "¹öÆ°À» Àß¸ø ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. (´Ù½Ã ÁøÇà)";
+            ResultText.text = "ë²„íŠ¼ì„ ìž˜ëª» ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤. (ë‹¤ì‹œ ì§„í–‰)";
             gameOver = true;
             return;
         }
@@ -118,6 +109,17 @@ public class GameManager : MonoBehaviour
             ComSel(min, max);
             Turn++;
             pTime = 5.0f;
+
+            if (Turn <= 20)
+            PChanceText.text = " ì§„í–‰ íšŸìˆ˜ : 20ë²ˆ ì¤‘ " + (Turn) + "ë²ˆ";
+
+        else
+        {  
+            waitImg.sprite = Imgs[2];
+            ResultText.text = " ëª¨ë¥´ê² ìŠµë‹ˆë‹¤..";
+            return;
+        }
+
     }
 
     private void UpClick()
@@ -127,7 +129,7 @@ public class GameManager : MonoBehaviour
         
         if(rand == 100)
         {
-            ResultText.text = "¹öÆ°À» Àß¸ø ¼±ÅÃÇÏ¼Ì½À´Ï´Ù. (´Ù½Ã ÁøÇà)";
+            ResultText.text = "ë²„íŠ¼ì„ ìž˜ëª» ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤. (ë‹¤ì‹œ ì§„í–‰)";
             gameOver = true;
             return;
         }
@@ -136,6 +138,17 @@ public class GameManager : MonoBehaviour
             ComSel(min, max);
             Turn++;
             pTime = 5.0f;
+
+            if (Turn <= 20)
+            PChanceText.text = " ì§„í–‰ íšŸìˆ˜ : 20ë²ˆ ì¤‘ " + (Turn) + "ë²ˆ";
+
+        else
+        {  
+            waitImg.sprite = Imgs[2];
+            ResultText.text = " ëª¨ë¥´ê² ìŠµë‹ˆë‹¤..";
+            return;
+        }
+
     }
 
     private void ReplayClick()
