@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     int Turn = 0;
     float pTime = 5.0f;
-    int max=101, min=1, rand;
+    int max=100, min=1, rand;
     bool gameOver;
     void Start()
     {
@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        TimeLimitImg.gameObject.SetActive(false);
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
 
@@ -66,8 +67,9 @@ public class GameManager : MonoBehaviour
             TimeLimitImg.sprite = Imgs[3];
             TimeLimitImg.gameObject.SetActive(true);
         }
+        
 
-     
+
     }
  
     void ComSel(int min,int max)
@@ -75,15 +77,15 @@ public class GameManager : MonoBehaviour
         if (gameOver)
             return;
         
-        if (max <= min )
+        if (max < min )
         {
             ResultText.text = "버튼을 잘못 누르셨습니다. (다시 진행)";
             gameOver = true;
             return;
         }
-        rand = Random.Range(min, max);
+        rand = Random.Range(min, (max +1));
       
-      if(max - 1 == min)
+      if(max == min)
         {
             ResultText.text = "당신이 생각한 숫자는 " + rand + "입니다!!";
             gameOver = true;
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             return;
         }
-            max = rand;
+            max = rand-1;
             ComSel(min, max);
             Turn++;
             pTime = 5.0f;
