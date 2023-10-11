@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        TimeLimitImg.gameObject.SetActive(false);
+        
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
 
@@ -96,6 +96,7 @@ public class GameManager : MonoBehaviour
     
     private void DownClick()
     {
+    TimeLimitImg.gameObject.SetActive(false);
         if (gameOver)
             return;
 
@@ -124,6 +125,7 @@ public class GameManager : MonoBehaviour
 
     private void UpClick()
     {
+    TimeLimitImg.gameObject.SetActive(false);
         if (gameOver)
             return;
         
