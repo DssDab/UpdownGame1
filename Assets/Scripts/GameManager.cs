@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Text PChanceText;
     public Text RuleText;
     public Text ResultText;
+    public Text TimeLimit;
 
     [Header("---Image Group---")]
     public Image waitImg;
@@ -58,8 +59,10 @@ public class GameManager : MonoBehaviour
             return;
         }
         pTime -= Time.deltaTime;
+        TimeLimit.text = pTime.ToString("F2");
         if (pTime < 0.0f)
         {
+            pTime = 0.0f;
             TimeLimitImg.sprite = Imgs[3];
             TimeLimitImg.gameObject.SetActive(true);
         }
